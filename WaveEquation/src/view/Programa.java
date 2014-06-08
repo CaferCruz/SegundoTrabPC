@@ -24,17 +24,14 @@ import javax.swing.table.DefaultTableModel;
 public class Programa extends javax.swing.JFrame {
 
     private ControladorInterface controle;
-
+    public int escolhaBotao = 1;
+            
+            
     public Programa(ControladorInterface c) {
         this.controle = c;
         initComponents();
-        this.controle.setValorCombo(metodoComboBox.getSelectedIndex());
-        this.controle.setValorFuncao(comboFuncao.getSelectedIndex());
-        this.controle.setParametros(Double.parseDouble(xTextField.getText()),
-                Double.parseDouble(yTextField.getText()),
-                Double.parseDouble(hTextField.getText()),
-                Integer.parseInt(nTextField.getText()));
-        carregaTabela();
+        this.controle.setValorQuestao(escolhaQuestao.getSelectedIndex(), escolhaBotao);
+//        carregaTabela();
     }
 
     /**
@@ -46,72 +43,18 @@ public class Programa extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        metodoComboBox = new javax.swing.JComboBox();
+        jFileChooser1 = new javax.swing.JFileChooser();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jSeparator1 = new javax.swing.JSeparator();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaValores = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        xTextField = new javax.swing.JFormattedTextField();
-        yTextField = new javax.swing.JFormattedTextField();
-        hTextField = new javax.swing.JFormattedTextField();
-        nTextField = new javax.swing.JFormattedTextField();
-        comboFuncao = new javax.swing.JComboBox();
-        jButton3 = new javax.swing.JButton();
+        calcularButton = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        implicitoRadioButton = new javax.swing.JRadioButton();
+        explicitoRadioButton = new javax.swing.JRadioButton();
+        escolhaQuestao = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        metodoComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Euller", "RK2", "RK3", "RK4" }));
-        metodoComboBox.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                metodoComboBoxItemStateChanged(evt);
-            }
-        });
-        metodoComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                metodoComboBoxActionPerformed(evt);
-            }
-        });
-
-        tabelaValores.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Valor X", "Valor Y"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(tabelaValores);
-
-        jButton1.setText("Limpa");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setText("numero passos:");
-
-        jLabel2.setText("x0:");
-
-        jLabel3.setText("y0:");
-
-        jLabel4.setText("tamanho passo:");
-
-        jLabel5.setText("f'(x) =");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jButton2.setText("Gerar Grafico");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -120,364 +63,139 @@ public class Programa extends javax.swing.JFrame {
             }
         });
 
-        xTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
-        xTextField.setText("0");
-        xTextField.addActionListener(new java.awt.event.ActionListener() {
+        calcularButton.setText("Calcular");
+        calcularButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                xTextFieldActionPerformed(evt);
-            }
-        });
-       
-        xTextField.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                xTextFieldInputMethodTextChanged(evt);
-            }
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-        });
-        xTextField.addKeyListener(new java.awt.event.KeyAdapter() {           
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                xTextFieldKeyReleased(evt);
+                calcularButtonActionPerformed(evt);
             }
         });
 
-        yTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
-        yTextField.setText("0");
-        yTextField.addActionListener(new java.awt.event.ActionListener() {
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/wave-equation.jpg"))); // NOI18N
+
+        buttonGroup1.add(implicitoRadioButton);
+        implicitoRadioButton.setSelected(true);
+        implicitoRadioButton.setText("Implícito");
+        implicitoRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                yTextFieldActionPerformed(evt);
-            }
-        });
-        yTextField.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                yTextFieldInputMethodTextChanged(evt);
-            }
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-        });
-        yTextField.addKeyListener(new java.awt.event.KeyAdapter() {           
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                yTextFieldKeyReleased(evt);
+                implicitoRadioButtonActionPerformed(evt);
             }
         });
 
-        hTextField.setText("0");
-        hTextField.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(explicitoRadioButton);
+        explicitoRadioButton.setText("Explícito");
+        explicitoRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hTextFieldActionPerformed(evt);
-            }
-        });
-        hTextField.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                hTextFieldInputMethodTextChanged(evt);
-            }
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-        });
-        hTextField.addKeyListener(new java.awt.event.KeyAdapter() {            
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                hTextFieldKeyReleased(evt);
+                explicitoRadioButtonActionPerformed(evt);
             }
         });
 
-        nTextField.setText("0");
-        nTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nTextFieldActionPerformed(evt);
-            }
-        });
-        nTextField.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                nTextFieldInputMethodTextChanged(evt);
-            }
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-        });
-        nTextField.addKeyListener(new java.awt.event.KeyAdapter() {           
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                nTextFieldKeyReleased(evt);
-            }
-        });
-
-        comboFuncao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1 - x + 4 * y", "x²", "x + y" }));
-        comboFuncao.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                comboFuncaoItemStateChanged(evt);
-            }
-        });
-
-        jButton3.setText("Calcular");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
+        escolhaQuestao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Questão 1", "Questão 2", "Questão 3", "Quetão 4", "Questão 5" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jSeparator1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(comboFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(implicitoRadioButton)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(metodoComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(xTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLabel3)))
-                            .addGap(8, 8, 8)
-                            .addComponent(yTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(hTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLabel1)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(nTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(12, 12, 12)
-                                    .addComponent(jButton1)
-                                    .addGap(32, 32, 32)
-                                    .addComponent(jButton3)
-                                    .addGap(28, 28, 28)
-                                    .addComponent(jButton2))))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(explicitoRadioButton)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(calcularButton)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jButton2))
+                                .addComponent(escolhaQuestao, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(comboFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(escolhaQuestao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 213, Short.MAX_VALUE)
+                .addComponent(implicitoRadioButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel1)
-                    .addComponent(xTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(yTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(hTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(metodoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2)
-                            .addComponent(jButton3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(jButton2)
+                    .addComponent(calcularButton)
+                    .addComponent(explicitoRadioButton))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void metodoComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_metodoComboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_metodoComboBoxActionPerformed
-
-    private void metodoComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_metodoComboBoxItemStateChanged
-        // TODO add your handling code here:
-        controle.setValorCombo(metodoComboBox.getSelectedIndex());
-        limpaTabela();
-        carregaTabela();
-    }//GEN-LAST:event_metodoComboBoxItemStateChanged
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        limpaTabela();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
             // TODO add your handling code here:
-            controle.criarGrafico();
+           // controle.criarGrafico();
         } catch (Exception ex) {
             Logger.getLogger(Programa.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void comboFuncaoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboFuncaoItemStateChanged
+    private void calcularButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcularButtonActionPerformed
         // TODO add your handling code here:
-        controle.setValorFuncao(comboFuncao.getSelectedIndex());
-        limpaTabela();
-    }//GEN-LAST:event_comboFuncaoItemStateChanged
+        controle.setValorQuestao(escolhaQuestao.getSelectedIndex(), this.escolhaBotao);
+        //limpaTabela();
+        //carregaTabela();
+    }//GEN-LAST:event_calcularButtonActionPerformed
 
-    private void xTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xTextFieldActionPerformed
-        // TODO add your handling code here:        
-        controle.setX0(Double.parseDouble(xTextField.getText()));
-        limpaTabela();
-    }//GEN-LAST:event_xTextFieldActionPerformed
+    private void implicitoRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_implicitoRadioButtonActionPerformed
+       this.escolhaBotao = 1;
+    }//GEN-LAST:event_implicitoRadioButtonActionPerformed
 
-    private void yTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yTextFieldActionPerformed
-        // TODO add your handling code here:
-        controle.setY0(Double.parseDouble(yTextField.getText()));
-        limpaTabela();
-    }//GEN-LAST:event_yTextFieldActionPerformed
-
-    private void hTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hTextFieldActionPerformed
-        // TODO add your handling code here:
-        controle.setH(Double.parseDouble(hTextField.getText()));
-        limpaTabela();
-    }//GEN-LAST:event_hTextFieldActionPerformed
-
-    private void nTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nTextFieldActionPerformed
-        // TODO add your handling code here:
-        controle.setM(Integer.parseInt(nTextField.getText()));
-        limpaTabela();
-    }//GEN-LAST:event_nTextFieldActionPerformed
-
-    private void xTextFieldInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_xTextFieldInputMethodTextChanged
-        // TODO add your handling code here:
-        try{
-            controle.setX0(Double.parseDouble(xTextField.getText()));
-        }catch(Exception e){
-            
-        }
-        limpaTabela();
-    }//GEN-LAST:event_xTextFieldInputMethodTextChanged
-
-    private void yTextFieldInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_yTextFieldInputMethodTextChanged
-        // TODO add your handling code here:
-        try {
-            controle.setY0(Double.parseDouble(yTextField.getText()));
-        }catch(Exception e){
-            
-        }
-        limpaTabela();
-    }//GEN-LAST:event_yTextFieldInputMethodTextChanged
-
-    private void hTextFieldInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_hTextFieldInputMethodTextChanged
-        // TODO add your handling code here:
-        try {
-            controle.setH(Double.parseDouble(hTextField.getText()));
-        } catch (Exception e) {
-            
-        }
-        limpaTabela();
-    }//GEN-LAST:event_hTextFieldInputMethodTextChanged
-
-    private void nTextFieldInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_nTextFieldInputMethodTextChanged
-        // TODO add your handling code here:
-        try {
-            controle.setM(Integer.parseInt(nTextField.getText()));
-        } catch (Exception e) {
-
-        }
-        limpaTabela();
-    }//GEN-LAST:event_nTextFieldInputMethodTextChanged
-
-    private void xTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_xTextFieldKeyReleased
-        // TODO add your handling code here:
-        try {
-            controle.setX0(Double.parseDouble(xTextField.getText()));
-        } catch (Exception e) {
-        }
-        limpaTabela();
-    }//GEN-LAST:event_xTextFieldKeyReleased
-
-    private void yTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_yTextFieldKeyReleased
-        // TODO add your handling code here:
-        try {
-            controle.setY0(Double.parseDouble(yTextField.getText()));
-        } catch (Exception e) {
-
-        }
-
-        limpaTabela();
-    }//GEN-LAST:event_yTextFieldKeyReleased
-
-    private void hTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_hTextFieldKeyReleased
-        // TODO add your handling code here:
-        try {
-            controle.setH(Double.parseDouble(hTextField.getText()));
-        }catch(Exception e){
-            
-        }
-        limpaTabela();
-    }//GEN-LAST:event_hTextFieldKeyReleased
-
-    private void nTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nTextFieldKeyReleased
-        // TODO add your handling code here:
-        try {
-            controle.setM(Integer.parseInt(nTextField.getText()));
-        }catch(Exception e){
-            
-        }
-        limpaTabela();
-    }//GEN-LAST:event_nTextFieldKeyReleased
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        controle.setValorCombo(metodoComboBox.getSelectedIndex());
-        limpaTabela();
-        carregaTabela();
-    }//GEN-LAST:event_jButton3ActionPerformed
-    private void carregaTabela() {
-        DefaultTableModel model = (DefaultTableModel) tabelaValores.getModel();
-        Vector v1 = new Vector(controle.getLista().get(0));
-        Vector v2 = new Vector(controle.getLista().get(1));
-
-        for (int i = 0; i < controle.getLista().get(0).size(); i++) {
-            Vector v = new Vector();
-            v.add(v1.get(i));
-            v.add(v2.get(i));
-            model.addRow(v);
-        }
-    }
-
-    private void limpaTabela() {
-        DefaultTableModel model = (DefaultTableModel) tabelaValores.getModel();
-        while (model.getRowCount() > 0) {
-            model.removeRow(0);
-        }
-
-    }
+    private void explicitoRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_explicitoRadioButtonActionPerformed
+       this.escolhaBotao = 2;
+    }//GEN-LAST:event_explicitoRadioButtonActionPerformed
+//    private void carregaTabela() {
+//        DefaultTableModel model = (DefaultTableModel) tabelaValores.getModel();
+//        Vector v1 = new Vector(controle.getLista().get(0));
+//        Vector v2 = new Vector(controle.getLista().get(1));
+//
+//        for (int i = 0; i < controle.getLista().get(0).size(); i++) {
+//            Vector v = new Vector();
+//            v.add(v1.get(i));
+//            v.add(v2.get(i));
+//            model.addRow(v);
+//        }
+//    }
+//
+//    private void limpaTabela() {
+//        DefaultTableModel model = (DefaultTableModel) tabelaValores.getModel();
+//        while (model.getRowCount() > 0) {
+//            model.removeRow(0);
+//        }
+//
+//    }
 
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox comboFuncao;
-    private javax.swing.JFormattedTextField hTextField;
-    private javax.swing.JButton jButton1;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton calcularButton;
+    private javax.swing.JComboBox escolhaQuestao;
+    private javax.swing.JRadioButton explicitoRadioButton;
+    private javax.swing.JRadioButton implicitoRadioButton;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JFileChooser jFileChooser1;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JComboBox metodoComboBox;
-    private javax.swing.JFormattedTextField nTextField;
-    private javax.swing.JTable tabelaValores;
-    private javax.swing.JFormattedTextField xTextField;
-    private javax.swing.JFormattedTextField yTextField;
     // End of variables declaration//GEN-END:variables
 
 }
