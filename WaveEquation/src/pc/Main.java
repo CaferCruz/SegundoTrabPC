@@ -5,7 +5,7 @@
 package pc;
 
 import view.Programa;
-import controller.ControladorInterface;
+
 
 /**
  *
@@ -17,9 +17,11 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws Exception {        
-        ControladorInterface c = ControladorInterface.getInstance();
-        Programa p = new Programa(c);
+        Programa p = new Programa();
         p.setTitle("Equação da Onda");
         p.setVisible(true);
     }
+     public static void setValorQuestao(int valor, int escolha){
+   
+   }
 }

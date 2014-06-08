@@ -1,36 +1,25 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * Programa.java
- *
- * Created on 27/05/2014, 17:37:15
- */
 package view;
 
-import controller.ControladorInterface;
 import java.awt.event.KeyEvent;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
-
 /**
  *
- * @author 03219223109
+ * @author Cafer
  */
 public class Programa extends javax.swing.JFrame {
 
-    private ControladorInterface controle;
+  //  private ControladorInterface controle;
     public int escolhaBotao = 1;
             
             
-    public Programa(ControladorInterface c) {
-        this.controle = c;
+    public Programa() {
+       // this.controle = c;
         initComponents();
-        this.controle.setValorQuestao(escolhaQuestao.getSelectedIndex(), escolhaBotao);
+      //  this.controle.
+        setValorQuestao(escolhaQuestao.getSelectedIndex(), escolhaBotao);
 //        carregaTabela();
     }
 
@@ -149,7 +138,8 @@ public class Programa extends javax.swing.JFrame {
 
     private void calcularButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcularButtonActionPerformed
         // TODO add your handling code here:
-        controle.setValorQuestao(escolhaQuestao.getSelectedIndex(), this.escolhaBotao);
+//        controle.
+        setValorQuestao(escolhaQuestao.getSelectedIndex(), this.escolhaBotao);
         //limpaTabela();
         //carregaTabela();
     }//GEN-LAST:event_calcularButtonActionPerformed
@@ -197,5 +187,11 @@ public class Programa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
+
+    private void setValorQuestao(int selectedIndex, int escolhaBotao) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
 
 }
