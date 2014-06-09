@@ -102,6 +102,9 @@ public class EquacaoOnda {
             multiplicarLinha(sistema, i, d);
             ret[i] = sistema[i][ret.length];
         }
+//        System.out.println("");
+//        mostrarMatriz(sistema);
+//        System.out.println("");
         return ret;
     }
 

@@ -168,7 +168,7 @@ public class Programa extends javax.swing.JFrame {
             }
         });
 
-        valorDeltaX.setText("5");
+        valorDeltaX.setText("6");
 
         valorDeltaT.setText("0.1");
 
