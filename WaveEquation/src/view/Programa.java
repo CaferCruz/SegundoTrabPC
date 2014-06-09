@@ -37,7 +37,6 @@ public class Programa extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jButton2 = new javax.swing.JButton();
         calcularButton = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
         implicitoRadioButton = new javax.swing.JRadioButton();
         explicitoRadioButton = new javax.swing.JRadioButton();
         escolhaQuestao = new javax.swing.JComboBox();
@@ -58,8 +57,6 @@ public class Programa extends javax.swing.JFrame {
                 calcularButtonActionPerformed(evt);
             }
         });
-
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/wave-equation.jpg"))); // NOI18N
 
         buttonGroup1.add(implicitoRadioButton);
         implicitoRadioButton.setSelected(true);
@@ -84,10 +81,6 @@ public class Programa extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,14 +96,12 @@ public class Programa extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(jButton2))
                                 .addComponent(escolhaQuestao, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 16, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(162, 162, 162)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(escolhaQuestao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -129,6 +120,17 @@ public class Programa extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
+            
+            
+            java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                double[][] tabela = {{0.1,0.2,0.3},
+                                     {0.4,0.5,0.6},
+                                     {0.7,0.8,0.9}};
+                new Tabela(0.1f, 0.1f, tabela).setVisible(true);
+            }
+        });
             // TODO add your handling code here:
            // controle.criarGrafico();
         } catch (Exception ex) {
@@ -184,12 +186,11 @@ public class Programa extends javax.swing.JFrame {
     private javax.swing.JRadioButton implicitoRadioButton;
     private javax.swing.JButton jButton2;
     private javax.swing.JFileChooser jFileChooser1;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 
     private void setValorQuestao(int selectedIndex, int escolhaBotao) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 
