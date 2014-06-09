@@ -71,12 +71,12 @@ public class EquacaoOnda {
             if (i > 0) {
                 ret[i][i - 1] = -0.5;
             } else {
-                ret[i][length] = matriz[linha][0] * 0.5;
+                ret[i][length] += matriz[linha][0] * 0.5;
             }
             if (i < length - 1) {
                 ret[i][i + 1] = delta - 0.5;
             } else {
-                ret[i][length] = matriz[linha][length + 1] * (0.5 - delta);
+                ret[i][length] += matriz[linha][length + 1] * (0.5 - delta);
             }
             ret[i][length] += delta * (2.0 *matriz[linha - 1][i + 2] - matriz[linha - 2][i + 2]);
         }
