@@ -25,4 +25,9 @@ public class EquacaoOnda {
             pontos[i][0] = pontos[i][nX -1] = 0.0;
         }
     }
+    
+    //U(i,k+1) = (deltaX^2/2deltaT^2)(2U(k,i+1) - U(k-1,i+1) - U(k+1,i+1)) + (U(k+1,i-1) + U(k+1,i+1))/2
+    public void resolverImplicito(){
+        
+    }
 }
