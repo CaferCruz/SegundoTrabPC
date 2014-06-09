@@ -6,6 +6,8 @@
 
 package view;
 
+import pc.EquacaoOnda;
+
 /**
  *
  * @author Felipe Godoy
@@ -19,6 +21,10 @@ public class Tabela extends javax.swing.JFrame {
     private float t0;
     private float h;
     private double[][] matrixPontos;
+    
+    public Tabela(EquacaoOnda e){
+        this(0.0f,(float)e.getdT(),e.getPontos());
+    }
 
     public Tabela(float t0, float h, double[][] matrixPontos) {
         this.t0 = t0;

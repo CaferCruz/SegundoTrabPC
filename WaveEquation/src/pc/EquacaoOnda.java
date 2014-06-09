@@ -116,4 +116,26 @@ public class EquacaoOnda {
             sistema[linhaDest][i] += sistema[linhaOrig][i];
         }
     }
+
+    public double getdT() {
+        return dT;
+    }
+
+    public double getdX() {
+        return dX;
+    }
+
+    public int getnT() {
+        return nT;
+    }
+
+    public int getnX() {
+        return nX;
+    }
+
+    public double[][] getPontos() {
+        return pontos;
+    }
+    
+    
 }
