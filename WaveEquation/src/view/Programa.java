@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package view;
 
 import java.awt.event.KeyEvent;
@@ -6,6 +5,7 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+import pc.EquacaoOnda;
 
 /**
  *
@@ -15,14 +15,11 @@ public class Programa extends javax.swing.JFrame {
 
     //  private ControladorInterface controle;
     public int escolhaBotao = 1;
-    private double xInicial, xFinal, deltaX, tInicial, tFinal, deltaT, c;
-
+    public double xInicial, xFinal, deltaX, tInicial, tFinal, deltaT, c;
+    private EquacaoOnda eqOnda;
+    
     public Programa() {
-        // this.controle = c;
         initComponents();
-        //  this.controle.
-       // setValorQuestao(escolhaQuestao.getSelectedIndex(), escolhaBotao);
-//        carregaTabela();
     }
 
     /**
@@ -56,12 +53,12 @@ public class Programa extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        valorXInicial = new javax.swing.JTextField();
+        valorXFinal = new javax.swing.JTextField();
+        valorDeltaX = new javax.swing.JTextField();
+        valorTInicial = new javax.swing.JTextField();
+        valorTFinal = new javax.swing.JTextField();
+        valorDeltaT = new javax.swing.JTextField();
 
         jPasswordField1.setText("jPasswordField1");
 
@@ -164,17 +161,11 @@ public class Programa extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setText("t (inicial) = ");
 
-        jTextField1.setText("jTextField1");
-
-        jTextField2.setText("jTextField1");
-
-        jTextField3.setText("jTextField1");
-
-        jTextField4.setText("jTextField1");
-
-        jTextField5.setText("jTextField1");
-
-        jTextField6.setText("jTextField1");
+        valorXInicial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                valorXInicialActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -185,32 +176,35 @@ public class Programa extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel7)
-                        .addGap(6, 6, 6)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(valorDeltaX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(22, 22, 22)
-                                .addComponent(jLabel13))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(1, 1, 1)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel12)))
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(15, Short.MAX_VALUE))
+                            .addComponent(valorXInicial)
+                            .addComponent(valorXFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(valorDeltaT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel12))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(valorTFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(valorTInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
         );
+
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {valorDeltaT, valorDeltaX, valorTFinal, valorTInicial, valorXFinal, valorXInicial});
+
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -218,22 +212,24 @@ public class Programa extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(valorXInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(valorTInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jLabel13)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(valorXFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(valorTFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jLabel14)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(valorDeltaX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(valorDeltaT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
+
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {valorDeltaT, valorDeltaX, valorTFinal, valorTInicial, valorXFinal, valorXInicial});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -243,7 +239,7 @@ public class Programa extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jLabel8)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 22, Short.MAX_VALUE))
             .addComponent(jSeparator1)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -258,7 +254,7 @@ public class Programa extends javax.swing.JFrame {
                                 .addComponent(explicitoRadioButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(calcularButton)
-                                .addGap(33, 33, 33)
+                                .addGap(18, 18, 18)
                                 .addComponent(jButton2)
                                 .addGap(18, 18, 18))))
                     .addGroup(layout.createSequentialGroup()
@@ -282,11 +278,11 @@ public class Programa extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(implicitoRadioButton)
                 .addGap(2, 2, 2)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(explicitoRadioButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(calcularButton)
-                        .addComponent(jButton2)))
+                        .addComponent(jButton2))
+                    .addComponent(explicitoRadioButton))
                 .addGap(26, 26, 26))
         );
 
@@ -303,8 +299,14 @@ public class Programa extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void calcularButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcularButtonActionPerformed
-
-       // setValorQuestao(escolhaQuestao.getSelectedIndex(), this.escolhaBotao);
+        if(this.escolhaBotao==1){
+            
+        }else if(this.escolhaBotao==2){        
+            eqOnda.resolverExplicito(Double.parseDouble(valorXInicial.getText()), Double.parseDouble(valorXFinal.getText()),
+                    Double.parseDouble(valorDeltaX.getText()), Double.parseDouble(valorTInicial.getText()),
+                    Double.parseDouble(valorTFinal.getText()), Double.parseDouble(valorDeltaT.getText()));
+        }
+                
 
     }//GEN-LAST:event_calcularButtonActionPerformed
 
@@ -315,6 +317,10 @@ public class Programa extends javax.swing.JFrame {
     private void explicitoRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_explicitoRadioButtonActionPerformed
         this.escolhaBotao = 2;
     }//GEN-LAST:event_explicitoRadioButtonActionPerformed
+
+    private void valorXInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valorXInicialActionPerformed
+        
+    }//GEN-LAST:event_valorXInicialActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -341,38 +347,13 @@ public class Programa extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField valorDeltaT;
+    private javax.swing.JTextField valorDeltaX;
+    private javax.swing.JTextField valorTFinal;
+    private javax.swing.JTextField valorTInicial;
+    private javax.swing.JTextField valorXFinal;
+    private javax.swing.JTextField valorXInicial;
     // End of variables declaration//GEN-END:variables
-
-    private void setValorQuestao(int selectedIndex, int escolhaBotao) {
-        switch (selectedIndex) {
-            case 1:
-                //questao 1
-                switch (escolhaBotao) {
-                    case 1:
-                        //implicito
-
-                        break;
-                    case 2:
-                        //explicito (x0,x,Ax,t0, t, At)
-                        solucaoExplicito(xInicial, xFinal, deltaX, tInicial, tFinal, deltaT, c);
-                        break;
-                }
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            default:
-                System.out.println("Este não é uma opção válido!");
-        }
-
-    }
 
     private void solucaoExplicito(double xI, double xF, double dX, double tI, double tF, double dT, double c) {
         Double uProxJ[] = new Double[(int) (xF / dX)];
@@ -395,203 +376,3 @@ public class Programa extends javax.swing.JFrame {
 
     }
 }
-=======
-package view;
-
-import java.awt.event.KeyEvent;
-import java.util.Vector;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.table.DefaultTableModel;
-/**
- *
- * @author Cafer
- */
-public class Programa extends javax.swing.JFrame {
-
-  //  private ControladorInterface controle;
-    public int escolhaBotao = 1;
-            
-            
-    public Programa() {
-       // this.controle = c;
-        initComponents();
-      //  this.controle.
-        setValorQuestao(escolhaQuestao.getSelectedIndex(), escolhaBotao);
-//        carregaTabela();
-    }
-
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
-        jFileChooser1 = new javax.swing.JFileChooser();
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        jSeparator1 = new javax.swing.JSeparator();
-        jButton2 = new javax.swing.JButton();
-        calcularButton = new javax.swing.JButton();
-        implicitoRadioButton = new javax.swing.JRadioButton();
-        explicitoRadioButton = new javax.swing.JRadioButton();
-        escolhaQuestao = new javax.swing.JComboBox();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        jButton2.setText("Gerar Grafico");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        calcularButton.setText("Calcular");
-        calcularButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                calcularButtonActionPerformed(evt);
-            }
-        });
-
-        buttonGroup1.add(implicitoRadioButton);
-        implicitoRadioButton.setSelected(true);
-        implicitoRadioButton.setText("Implícito");
-        implicitoRadioButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                implicitoRadioButtonActionPerformed(evt);
-            }
-        });
-
-        buttonGroup1.add(explicitoRadioButton);
-        explicitoRadioButton.setText("Explícito");
-        explicitoRadioButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                explicitoRadioButtonActionPerformed(evt);
-            }
-        });
-
-        escolhaQuestao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Questão 1", "Questão 2", "Questão 3", "Quetão 4", "Questão 5" }));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(implicitoRadioButton)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(explicitoRadioButton)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(calcularButton)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jButton2))
-                                .addComponent(escolhaQuestao, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 16, Short.MAX_VALUE))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(162, 162, 162)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(escolhaQuestao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 213, Short.MAX_VALUE)
-                .addComponent(implicitoRadioButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(calcularButton)
-                    .addComponent(explicitoRadioButton))
-                .addContainerGap())
-        );
-
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        try {
-            
-            
-            java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                double[][] tabela = {{0.1,0.2,0.3},
-                                     {0.4,0.5,0.6},
-                                     {0.7,0.8,0.9}};
-                new Tabela(0.1f, 0.1f, tabela).setVisible(true);
-            }
-        });
-            // TODO add your handling code here:
-           // controle.criarGrafico();
-        } catch (Exception ex) {
-            Logger.getLogger(Programa.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void calcularButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcularButtonActionPerformed
-        // TODO add your handling code here:
-//        controle.
-        setValorQuestao(escolhaQuestao.getSelectedIndex(), this.escolhaBotao);
-        //limpaTabela();
-        //carregaTabela();
-    }//GEN-LAST:event_calcularButtonActionPerformed
-
-    private void implicitoRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_implicitoRadioButtonActionPerformed
-       this.escolhaBotao = 1;
-    }//GEN-LAST:event_implicitoRadioButtonActionPerformed
-
-    private void explicitoRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_explicitoRadioButtonActionPerformed
-       this.escolhaBotao = 2;
-    }//GEN-LAST:event_explicitoRadioButtonActionPerformed
-//    private void carregaTabela() {
-//        DefaultTableModel model = (DefaultTableModel) tabelaValores.getModel();
-//        Vector v1 = new Vector(controle.getLista().get(0));
-//        Vector v2 = new Vector(controle.getLista().get(1));
-//
-//        for (int i = 0; i < controle.getLista().get(0).size(); i++) {
-//            Vector v = new Vector();
-//            v.add(v1.get(i));
-//            v.add(v2.get(i));
-//            model.addRow(v);
-//        }
-//    }
-//
-//    private void limpaTabela() {
-//        DefaultTableModel model = (DefaultTableModel) tabelaValores.getModel();
-//        while (model.getRowCount() > 0) {
-//            model.removeRow(0);
-//        }
-//
-//    }
-
-    /**
-     * @param args the command line arguments
-     */
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton calcularButton;
-    private javax.swing.JComboBox escolhaQuestao;
-    private javax.swing.JRadioButton explicitoRadioButton;
-    private javax.swing.JRadioButton implicitoRadioButton;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JFileChooser jFileChooser1;
-    private javax.swing.JSeparator jSeparator1;
-    // End of variables declaration//GEN-END:variables
-
-    private void setValorQuestao(int selectedIndex, int escolhaBotao) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-
-
-}
->>>>>>> 7a0a069a1c9144aad822130e6d154189ed8c6f05
