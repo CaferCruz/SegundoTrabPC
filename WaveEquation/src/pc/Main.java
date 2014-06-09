@@ -20,8 +20,7 @@ public class Main {
         Programa p = new Programa();
         p.setTitle("Equação da Onda");
         p.setVisible(true);
+        
     }
-     public static void setValorQuestao(int valor, int escolha){
-   
-   }
+  
 }
