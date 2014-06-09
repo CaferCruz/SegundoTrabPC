@@ -25,6 +25,16 @@ public class EquacaoOnda {
             pontos[i][0] = pontos[i][nX - 1] = 0.0;
         }
     }
+    //U(i, k+1) = -U(i, t-1) +2U(i,t) + (U(i+1,t) -2U(i,t) +U(i-1,t)) *(dt/dx)^2
+    public void resolverExplicito(){
+        double delta = Math.pow(dT/dX, 2);
+        for (int i = 2; i < nT; i++) {
+            for (int j = 1; j < nX -1; j++) {
+                pontos[i][j] = 2 * pontos[i-1][j] - pontos[i-2][j] + (pontos[i-1][j-1] - 2*pontos[i-1][j] + pontos[i-1][j+1]) * delta; 
+            }
+        }
+//        mostrarMatriz(pontos);
+    }
 
     //U(i,k+1) = (deltaX^2/2deltaT^2)(2U(k,i+1) - U(k-1,i+1) - U(k+1,i+1)) + (U(k+1,i-1) + U(k+1,i+1))/2
     public void resolverImplicito() {
@@ -35,7 +45,7 @@ public class EquacaoOnda {
                 pontos[i][j + 1] = solucao[j];
             }
         }
-        mostrarMatriz(pontos);
+//        mostrarMatriz(pontos);
     }
 
     public static void mostrarArray(double[] array) {

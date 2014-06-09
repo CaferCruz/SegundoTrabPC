@@ -302,9 +302,9 @@ public class Programa extends javax.swing.JFrame {
         if(this.escolhaBotao==1){
             
         }else if(this.escolhaBotao==2){        
-            eqOnda.resolverExplicito(Double.parseDouble(valorXInicial.getText()), Double.parseDouble(valorXFinal.getText()),
-                    Double.parseDouble(valorDeltaX.getText()), Double.parseDouble(valorTInicial.getText()),
-                    Double.parseDouble(valorTFinal.getText()), Double.parseDouble(valorDeltaT.getText()));
+//            eqOnda.resolverExplicito(Double.parseDouble(valorXInicial.getText()), Double.parseDouble(valorXFinal.getText()),
+//                    Double.parseDouble(valorDeltaX.getText()), Double.parseDouble(valorTInicial.getText()),
+//                    Double.parseDouble(valorTFinal.getText()), Double.parseDouble(valorDeltaT.getText()));
         }
                 
 
