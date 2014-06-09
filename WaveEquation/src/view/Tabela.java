@@ -34,6 +34,14 @@ public class Tabela extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
     
+    public static void show(final EquacaoOnda e){
+            java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Tabela(e).setVisible(true);
+            }
+        });
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

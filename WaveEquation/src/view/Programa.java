@@ -322,6 +322,7 @@ public class Programa extends javax.swing.JFrame {
         }else if(this.escolhaBotao==2){        
             eqOnda.resolverExplicito();
         }
+        Tabela.show(eqOnda);
     }//GEN-LAST:event_calcularButtonActionPerformed
 
     private void implicitoRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_implicitoRadioButtonActionPerformed
