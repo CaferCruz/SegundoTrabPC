@@ -20,7 +20,8 @@ public class Main {
         p.setTitle("Equação da Onda");
         p.setVisible(true);
     }
-     public static void setValorQuestao(int valor, int escolha){
+    
+    public static void setValorQuestao(int valor, int escolha){
    
-   }
+    }
 }
