@@ -23,7 +23,7 @@ public class Tabela extends javax.swing.JFrame {
     private double[][] matrixPontos;
     
     public Tabela(EquacaoOnda e){
-        this(0.0f,(float)e.getdT(),e.getPontos());
+        this((float)e.getdT(),0.0f,e.getPontos());
     }
 
     public Tabela(float t0, float h, double[][] matrixPontos) {
@@ -51,6 +51,7 @@ public class Tabela extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane2 = new javax.swing.JScrollPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
@@ -61,15 +62,17 @@ public class Tabela extends javax.swing.JFrame {
         jTable1.getAccessibleContext().setAccessibleName("");
         jTable1.getAccessibleContext().setAccessibleDescription("");
 
+        jScrollPane2.setViewportView(jScrollPane1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
         );
 
         pack();
@@ -112,6 +115,7 @@ public class Tabela extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

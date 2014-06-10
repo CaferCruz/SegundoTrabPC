@@ -5,6 +5,12 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
 import pc.EquacaoOnda;
 
 /**
@@ -308,8 +314,23 @@ public class Programa extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
-            // TODO add your handling code here:
-            // controle.criarGrafico();
+            XYSeriesCollection collection = new XYSeriesCollection();
+            double[][] pontos = eqOnda.getPontos();
+            for (int i = 0; i < pontos.length; i++) {
+                XYSeries serie = new XYSeries(""+i);
+                double t = i * eqOnda.getdT();
+                for (int j = 0; j < pontos[i].length; j++) {
+                    double x = j * eqOnda.getdX();
+                    serie.add(x,pontos[i][j]);
+                }
+                collection.addSeries(serie);
+            }
+            JFreeChart chart = ChartFactory.createXYLineChart("Gráfico", "xI", "UJ", collection);
+            XYPlot plot = chart.getXYPlot();
+            ChartFrame frame = new ChartFrame("Graficos", chart);
+            frame.setSize(450, 250);
+            frame.setVisible(true);
+            
         } catch (Exception ex) {
             Logger.getLogger(Programa.class.getName()).log(Level.SEVERE, null, ex);
         }

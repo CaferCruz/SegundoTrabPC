@@ -18,14 +18,16 @@ public class EquacaoOnda {
     }
 
     private void valoresIniciais() {
+        
         for (int i = 0; i < nX; i++) {
             pontos[0][i] = pontos[1][i] = Math.sin(Math.PI * i * dX);
         }
         for (int i = 0; i < nT; i++) {
             pontos[i][0] = pontos[i][nX - 1] = 0.0;
         }
+//        pontos[0][nX/2] = pontos[1][nX/2] = 1.0;
     }
-    //U(i, t+1) = -U(i, t-1) +2U(i,t) + (U(i+1,t) -2U(i,t) +U(i-1,t)) *(dt/dx)^2
+    //U(i, t+1) = -U(i, t-1) +2U(i,t) + (U(i+1,t) -2U(i,t) +U(i-1,t))*(dt/dx)^2
     public void resolverExplicito(){
         double delta = Math.pow(dT/dX, 2);
         for (int i = 2; i < nT; i++) {
@@ -45,7 +47,7 @@ public class EquacaoOnda {
                 pontos[i][j + 1] = solucao[j];
             }
         }
-        mostrarMatriz(pontos);
+//        mostrarMatriz(pontos);
     }
 
     public static void mostrarArray(double[] array) {
@@ -65,25 +67,28 @@ public class EquacaoOnda {
     private double[][] montarSistema(int linha, double[][] matriz) {
         int length = matriz[linha].length - 2;
         double[][] ret = new double[length][length + 1];
-        double delta = Math.pow(dX /(2.0 * dT), 2); //(deltaX / deltaT)^2
+        double delta = Math.pow(dX /dT, 2); //(deltaX / deltaT)^2
         for (int i = 0; i < length; i++) {
-            ret[i][i] = 1;
+            ret[i][i] = (-delta - 2.0);
             if (i > 0) {
-                ret[i][i - 1] = -0.5;
+                ret[i][i - 1] = 1.0;
             } else {
-                ret[i][length] += matriz[linha][0] * 0.5;
+                ret[i][length] = -(matriz[linha][0]);
             }
             if (i < length - 1) {
-                ret[i][i + 1] = delta - 0.5;
+                ret[i][i + 1] = 1.0;
             } else {
-                ret[i][length] += matriz[linha][length + 1] * (0.5 - delta);
+                ret[i][length] = -(matriz[linha][length + 1]);
             }
-            ret[i][length] += delta * (2.0 *matriz[linha - 1][i + 2] - matriz[linha - 2][i + 2]);
+            ret[i][length] += (delta * ( -2.0 * matriz[linha - 1][i + 1] + matriz[linha - 2][i + 1]));
         }
         return ret;
     }
 
     private double[] resolverSistema(double[][] sistema) {
+//        System.out.println("antes");
+//        mostrarMatriz(sistema);
+//        System.out.println("");
         double[] ret = new double[sistema.length];
         for (int i = 0; i < sistema.length - 1; i++) {
             double d = sistema[i + 1][i] / sistema[i][i];
@@ -102,7 +107,7 @@ public class EquacaoOnda {
             multiplicarLinha(sistema, i, d);
             ret[i] = sistema[i][ret.length];
         }
-//        System.out.println("");
+//        System.out.println("depois");
 //        mostrarMatriz(sistema);
 //        System.out.println("");
         return ret;
