@@ -19,13 +19,13 @@ public class EquacaoOnda {
 
     private void valoresIniciais() {
         
-        for (int i = 0; i < nX; i++) {
-            pontos[0][i] = pontos[1][i] = Math.sin(Math.PI * i * dX);
-        }
+//        for (int i = 0; i < nX; i++) {
+//            pontos[0][i] = pontos[1][i] = Math.sin(Math.PI * i * dX);
+//        }
         for (int i = 0; i < nT; i++) {
             pontos[i][0] = pontos[i][nX - 1] = 0.0;
         }
-//        pontos[0][nX/2] = pontos[1][nX/2] = 1.0;
+        pontos[0][nX/2] = pontos[1][nX/2] = 1.0;
     }
     //U(i, t+1) = -U(i, t-1) +2U(i,t) + (U(i+1,t) -2U(i,t) +U(i-1,t))*(dt/dx)^2
     public void resolverExplicito(){

@@ -167,16 +167,21 @@ public class Programa extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setText("t (inicial) = ");
 
-        valorXFinal.setText("10");
+        valorXFinal.setText("20");
         valorXFinal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 valorXFinalActionPerformed(evt);
             }
         });
 
-        valorDeltaX.setText("6");
+        valorDeltaX.setText("10");
+        valorDeltaX.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                valorDeltaXActionPerformed(evt);
+            }
+        });
 
-        valorDeltaT.setText("0.1");
+        valorDeltaT.setText("0.01");
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setText("0");
@@ -357,6 +362,10 @@ public class Programa extends javax.swing.JFrame {
     private void valorXFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valorXFinalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_valorXFinalActionPerformed
+
+    private void valorDeltaXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valorDeltaXActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_valorDeltaXActionPerformed
     /**
      * @param args the command line arguments
      */
