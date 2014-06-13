@@ -334,7 +334,7 @@ public class Programa extends javax.swing.JFrame {
             JFreeChart chart = ChartFactory.createXYLineChart("Gráfico", "xI", "UJ", collection);
             XYPlot plot = chart.getXYPlot();
             ChartFrame frame = new ChartFrame("Graficos", chart);
-            frame.setSize(450, 250);
+            frame.setSize(1080, 720);
             frame.setVisible(true);
             
         } catch (Exception ex) {
