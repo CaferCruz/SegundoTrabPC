@@ -26,6 +26,7 @@ public class Programa extends javax.swing.JFrame {
     
     public Programa() {
         initComponents();
+        jButton2.setEnabled(false);
     }
 
     /**
@@ -113,7 +114,7 @@ public class Programa extends javax.swing.JFrame {
         jLabel2.setText("u(1,t) = 0");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("u(x,0) = sen(pi*x)");
+        jLabel3.setText("u(0.5,0) = 1");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Du/Dt(x,0) = 0");
@@ -349,6 +350,7 @@ public class Programa extends javax.swing.JFrame {
             eqOnda.resolverExplicito();
         }
         Tabela.show(eqOnda);
+        jButton2.setEnabled(true);
     }//GEN-LAST:event_calcularButtonActionPerformed
 
     private void implicitoRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_implicitoRadioButtonActionPerformed
